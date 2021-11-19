@@ -2,6 +2,10 @@
 
 The Terraform partial backend allows you to provide different parameter options during initilization or plan or apply. Therefore you can use that to structure your Terraform directories for one or more AWS Cloud accounts or environments.
 
+## Usage
+
+See this blog: <https://cloudly.engineer/2021/terraform-aws-multi-account-setup/aws/>
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
