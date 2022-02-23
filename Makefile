@@ -21,11 +21,11 @@ clean:
 
 .PHONY: tf-plan-example
 tf-plan-example:
-	terraform fmt && terraform init -backend-config accounts/${env}/backend.conf -reconfigure && terraform validate && terraform plan -var-file accounts/${env}/terraform.tfvars
+	terraform fmt --recursive && terraform init -backend-config accounts/${env}/backend.conf -reconfigure && terraform validate && terraform plan -var-file accounts/${env}/terraform.tfvars
 
 .PHONY: tf-apply-example
 tf-apply-example:
-	terraform fmt && terraform init -backend-config accounts/${env}/backend.conf -reconfigure && terraform validate && terraform apply -var-file accounts/${env}/terraform.tfvars -auto-approve
+	terraform fmt --recursive && terraform init -backend-config accounts/${env}/backend.conf -reconfigure && terraform validate && terraform apply -var-file accounts/${env}/terraform.tfvars -auto-approve
 
 .PHONY: tf-destroy-example
 tf-destroy-example:
