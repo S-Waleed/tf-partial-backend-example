@@ -1,15 +1,26 @@
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-added-large-files
-    -   id: detect-aws-credentials
-    -   id: detect-private-key
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: detect-aws-credentials
+      - id: detect-private-key
 
-- repo: git://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.56.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
-  hooks:
-    - id: terraform_tfsec
-    - id: terraform_docs
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.64.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    hooks:
+      - id: terraform_providers_lock
+      - id: terraform_tflint
+      - id: terraform_tfsec
+      - id: terraform_docs
+      - id: terraform_validate
+        args:
+          - --args=-json
+          - --args=-no-color
+      - id: terraform_fmt
+        args:
+          - --args=-no-color
+          - --args=-diff
+          - --args=-write=false
