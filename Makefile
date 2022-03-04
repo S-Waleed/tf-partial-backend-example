@@ -19,9 +19,13 @@ all-test: clean tf-plan-example
 clean:
 	rm -rf .terraform
 
+.PHONY: tf-init-example
+tf-init-example:
+	terraform init -backend-config accounts/${env}/backend.conf -reconfigure && terraform validate && terraform plan -var-file accounts/${env}/terraform.tfvars
+
 .PHONY: tf-plan-example
 tf-plan-example:
-	terraform fmt --recursive && terraform init -backend-config accounts/${env}/backend.conf -reconfigure && terraform validate && terraform plan -var-file accounts/${env}/terraform.tfvars
+	terraform fmt --recursive && terraform validate && terraform plan -var-file accounts/${env}/terraform.tfvars
 
 .PHONY: tf-apply-example
 tf-apply-example:
